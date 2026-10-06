@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Task Management Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div>
+        <h1>Task Management Dashboard</h1>
+        <p>Organize your work and stay productive</p>
+    </div>
+</header>
+
+<main>
+
+    <!-- Statistics -->
+    <section class="stats">
+
+        <div class="stat-card">
+            <h3>Total Tasks</h3>
+            <p id="totalTasks">0</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>To Do</h3>
+            <p id="todoTasks">0</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>In Progress</h3>
+            <p id="progressTasks">0</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Completed</h3>
+            <p id="completedTasks">0</p>
+        </div>
+
+    </section>
+
+
+    <!-- Add / Edit Task -->
+    <section class="form-section">
+
+        <h2 id="formTitle">Add New Task</h2>
+
+        <form id="taskForm">
+
+            <div class="form-group">
+                <label for="title">Task Title</label>
+
+                <input
+                        type="text"
+                        id="title"
+                        placeholder="Enter task title"
+                        required
+                >
+            </div>
+
+
+            <div class="form-group">
+                <label for="description">Description</label>
+
+                <textarea
+                        id="description"
+                        placeholder="Enter task description"
+                        required
+                ></textarea>
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label for="status">Status</label>
+
+                    <select id="status">
+                        <option value="To Do">To Do</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="priority">Priority</label>
+
+                    <select id="priority">
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="dueDate">Due Date</label>
+
+                    <input
+                            type="date"
+                            id="dueDate"
+                            required
+                    >
+                </div>
+
+            </div>
+
+
+            <div class="button-group">
+
+                <button
+                        type="submit"
+                        id="submitButton"
+                >
+                    Add Task
+                </button>
+
+                <button
+                        type="button"
+                        id="cancelButton"
+                        class="cancel-btn"
+                        onclick="cancelEdit()"
+                        style="display: none;"
+                >
+                    Cancel
+                </button>
+
+            </div>
+
+        </form>
+
+        <p id="errorMessage"></p>
+
+    </section>
+
+
+    <!-- Search and Filter -->
+    <section class="controls">
+
+        <input
+                type="text"
+                id="searchInput"
+                placeholder="🔍 Search tasks..."
+                oninput="displayTasks()"
+        >
+
+        <select
+                id="filterStatus"
+                onchange="displayTasks()"
+        >
+            <option value="All">All Status</option>
+            <option value="To Do">To Do</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+        </select>
+
+    </section>
+
+
+    <!-- Task List -->
+    <section class="task-section">
+
+        <div class="section-heading">
+            <h2>My Tasks</h2>
+            <span id="taskCount">0 tasks</span>
+        </div>
+
+        <div id="taskList"></div>
+
+    </section>
+
+</main>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
