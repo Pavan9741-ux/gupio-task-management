@@ -1,185 +1,445 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Task Management Dashboard</title>
+    <title>TaskFlow | Task Management Dashboard</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
-    <div>
-        <h1>Task Management Dashboard</h1>
-        <p>Organize your work and stay productive</p>
-    </div>
-</header>
+<div class="app">
 
-<main>
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
 
-    <!-- Statistics -->
-    <section class="stats">
+        <div class="brand">
+            <div class="brand-icon">✓</div>
 
-        <div class="stat-card">
-            <h3>Total Tasks</h3>
-            <p id="totalTasks">0</p>
+            <div>
+                <h2>TaskFlow</h2>
+                <span>Workspace</span>
+            </div>
         </div>
 
-        <div class="stat-card">
-            <h3>To Do</h3>
-            <p id="todoTasks">0</p>
+        <nav class="navigation">
+
+            <p class="nav-title">MAIN MENU</p>
+
+            <a href="#" class="nav-item active">
+                <span>▦</span>
+                Dashboard
+            </a>
+
+            <a href="#taskSection" class="nav-item">
+                <span>✓</span>
+                My Tasks
+            </a>
+
+            <a href="#createTask" class="nav-item">
+                <span>＋</span>
+                Create Task
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="product-card">
+                <span class="small-icon">⚡</span>
+
+                <h4>Stay productive</h4>
+
+                <p>
+                    Organize your work and
+                    complete your goals.
+                </p>
+            </div>
+
+            <div class="profile">
+                <div class="avatar">P</div>
+
+                <div>
+                    <strong>Pavan Karigar</strong>
+                    <span>Developer</span>
+                </div>
+            </div>
+
         </div>
 
-        <div class="stat-card">
-            <h3>In Progress</h3>
-            <p id="progressTasks">0</p>
-        </div>
-
-        <div class="stat-card">
-            <h3>Completed</h3>
-            <p id="completedTasks">0</p>
-        </div>
-
-    </section>
+    </aside>
 
 
-    <!-- Add / Edit Task -->
-    <section class="form-section">
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
 
-        <h2 id="formTitle">Add New Task</h2>
+        <!-- TOP BAR -->
+        <header class="topbar">
 
-        <form id="taskForm">
+            <div>
+                <p class="eyebrow">PRODUCTIVITY WORKSPACE</p>
 
-            <div class="form-group">
-                <label for="title">Task Title</label>
+                <h1>Good morning, Pavan 👋</h1>
 
-                <input
-                        type="text"
-                        id="title"
-                        placeholder="Enter task title"
-                        required
-                >
+                <p class="subtitle">
+                    Here's what's happening with your tasks today.
+                </p>
+            </div>
+
+            <div class="top-actions">
+
+                <div class="date-display">
+                    <span>📅</span>
+                    <span>Task Management</span>
+                </div>
+
+                <button
+                        class="primary-button"
+                        onclick="document.getElementById('createTask').scrollIntoView({behavior:'smooth'})">
+
+                    <span>＋</span>
+                    New Task
+
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- STATISTICS -->
+        <section class="stats">
+
+            <div class="stat-card blue">
+
+                <div class="stat-top">
+                    <span class="stat-label">TOTAL TASKS</span>
+
+                    <div class="stat-icon">▦</div>
+                </div>
+
+                <div class="stat-number" id="totalTasks">0</div>
+
+                <p class="stat-description">
+                    All tasks in workspace
+                </p>
+
             </div>
 
 
-            <div class="form-group">
-                <label for="description">Description</label>
+            <div class="stat-card orange">
 
-                <textarea
-                        id="description"
-                        placeholder="Enter task description"
-                        required
-                ></textarea>
+                <div class="stat-top">
+                    <span class="stat-label">TO DO</span>
+
+                    <div class="stat-icon">○</div>
+                </div>
+
+                <div class="stat-number" id="todoTasks">0</div>
+
+                <p class="stat-description">
+                    Tasks waiting to start
+                </p>
+
             </div>
 
 
-            <div class="form-row">
+            <div class="stat-card purple">
 
-                <div class="form-group">
-                    <label for="status">Status</label>
+                <div class="stat-top">
+                    <span class="stat-label">IN PROGRESS</span>
 
-                    <select id="status">
-                        <option value="To Do">To Do</option>
-                        <option value="In Progress">In Progress</option>
-                        <option value="Completed">Completed</option>
-                    </select>
+                    <div class="stat-icon">◔</div>
+                </div>
+
+                <div class="stat-number" id="progressTasks">0</div>
+
+                <p class="stat-description">
+                    Currently being worked on
+                </p>
+
+            </div>
+
+
+            <div class="stat-card green">
+
+                <div class="stat-top">
+                    <span class="stat-label">COMPLETED</span>
+
+                    <div class="stat-icon">✓</div>
+                </div>
+
+                <div class="stat-number" id="completedTasks">0</div>
+
+                <p class="stat-description">
+                    Successfully completed
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- CREATE TASK -->
+        <section class="panel create-panel" id="createTask">
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <span class="section-tag">TASK MANAGEMENT</span>
+
+                    <h2 id="formTitle">Create a new task</h2>
+
+                    <p>
+                        Add details about the work you want to accomplish.
+                    </p>
+
+                </div>
+
+                <div class="heading-icon">
+                    ✦
+                </div>
+
+            </div>
+
+
+            <form id="taskForm">
+
+                <div class="form-grid">
+
+                    <div class="form-group full">
+
+                        <label for="title">
+                            Task Title
+                        </label>
+
+                        <input
+                                type="text"
+                                id="title"
+                                placeholder="e.g. Complete Java interview preparation"
+                                required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label for="description">
+                            Description
+                        </label>
+
+                        <textarea
+                                id="description"
+                                placeholder="Describe what needs to be done..."
+                                required
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="status">
+                            Status
+                        </label>
+
+                        <select id="status">
+
+                            <option value="To Do">
+                                To Do
+                            </option>
+
+                            <option value="In Progress">
+                                In Progress
+                            </option>
+
+                            <option value="Completed">
+                                Completed
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="priority">
+                            Priority
+                        </label>
+
+                        <select id="priority">
+
+                            <option value="Low">
+                                Low
+                            </option>
+
+                            <option value="Medium">
+                                Medium
+                            </option>
+
+                            <option value="High">
+                                High
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="dueDate">
+                            Due Date
+                        </label>
+
+                        <input
+                                type="date"
+                                id="dueDate"
+                                required
+                        >
+
+                    </div>
+
                 </div>
 
 
-                <div class="form-group">
-                    <label for="priority">Priority</label>
+                <div class="form-footer">
 
-                    <select id="priority">
-                        <option value="Low">Low</option>
-                        <option value="Medium">Medium</option>
-                        <option value="High">High</option>
-                    </select>
+                    <p id="errorMessage"></p>
+
+                    <div class="button-group">
+
+                        <button
+                                type="button"
+                                id="cancelButton"
+                                class="secondary-button"
+                                onclick="cancelEdit()"
+                                style="display:none;"
+                        >
+                            Cancel
+                        </button>
+
+                        <button
+                                type="submit"
+                                id="submitButton"
+                                class="primary-button"
+                        >
+                            <span>＋</span>
+                            Add Task
+                        </button>
+
+                    </div>
+
                 </div>
 
+            </form>
 
-                <div class="form-group">
-                    <label for="dueDate">Due Date</label>
+        </section>
+
+
+        <!-- TASKS -->
+        <section class="panel task-panel" id="taskSection">
+
+            <div class="task-header">
+
+                <div>
+
+                    <span class="section-tag">WORKSPACE</span>
+
+                    <h2>My Tasks</h2>
+
+                    <p>
+                        Manage and track your current work.
+                    </p>
+
+                </div>
+
+                <span id="taskCount" class="task-count">
+                    0 tasks
+                </span>
+
+            </div>
+
+
+            <!-- SEARCH + FILTER -->
+
+            <div class="controls">
+
+                <div class="search-box">
+
+                    <span>⌕</span>
 
                     <input
-                            type="date"
-                            id="dueDate"
-                            required
+                            type="text"
+                            id="searchInput"
+                            placeholder="Search tasks..."
+                            oninput="displayTasks()"
                     >
+
                 </div>
 
+
+                <select
+                        id="filterStatus"
+                        onchange="displayTasks()"
+                >
+
+                    <option value="All">
+                        All Status
+                    </option>
+
+                    <option value="To Do">
+                        To Do
+                    </option>
+
+                    <option value="In Progress">
+                        In Progress
+                    </option>
+
+                    <option value="Completed">
+                        Completed
+                    </option>
+
+                </select>
+
             </div>
 
 
-            <div class="button-group">
+            <!-- TASK LIST -->
 
-                <button
-                        type="submit"
-                        id="submitButton"
-                >
-                    Add Task
-                </button>
+            <div id="taskList"></div>
 
-                <button
-                        type="button"
-                        id="cancelButton"
-                        class="cancel-btn"
-                        onclick="cancelEdit()"
-                        style="display: none;"
-                >
-                    Cancel
-                </button>
-
-            </div>
-
-        </form>
-
-        <p id="errorMessage"></p>
-
-    </section>
+        </section>
 
 
-    <!-- Search and Filter -->
-    <section class="controls">
+        <!-- FOOTER -->
 
-        <input
-                type="text"
-                id="searchInput"
-                placeholder="🔍 Search tasks..."
-                oninput="displayTasks()"
-        >
+        <footer>
 
-        <select
-                id="filterStatus"
-                onchange="displayTasks()"
-        >
-            <option value="All">All Status</option>
-            <option value="To Do">To Do</option>
-            <option value="In Progress">In Progress</option>
-            <option value="Completed">Completed</option>
-        </select>
+            <p>
+                TaskFlow • Built with HTML, CSS & JavaScript
+            </p>
 
-    </section>
+            <span>
+                Gupio Campus Placement Assignment
+            </span>
 
+        </footer>
 
-    <!-- Task List -->
-    <section class="task-section">
+    </main>
 
-        <div class="section-heading">
-            <h2>My Tasks</h2>
-            <span id="taskCount">0 tasks</span>
-        </div>
-
-        <div id="taskList"></div>
-
-    </section>
-
-</main>
+</div>
 
 
 <script src="script.js"></script>
 
 </body>
+
 </html>
